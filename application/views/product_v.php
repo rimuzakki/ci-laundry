@@ -10,6 +10,7 @@
         <th>#</th>
         <th>ID Produk</th>
         <th>Nama Produk</th>
+        <th>Deskripsi Produk</th>
         <th>Harga</th>
         <th>Gambar Produk</th>
         <th>Aksi</th>
@@ -31,6 +32,7 @@
         <td><?php echo $no; ?></td>
         <td><?php echo $row['id']; ?></td>
         <td><?php echo $row['nama_produk']; ?></td>
+        <td><?php echo $row['desc_produk']; ?></td>
         <td><?php echo $row['harga_produk']; ?></td>
         <!--<td><?php //echo $row['gambar_produk']; ?></td>-->
         <td><img data-name="product_image" class="img-thumbnail" src="<?php  echo base_url('img/product/'. $photos[0]);?>" alt="<?=$row['nama_produk'];?>"></td>

@@ -11,19 +11,13 @@ class Product extends CI_Controller {
     $this->load->helper('form');
     $this->load->helper('url');
 
-    $this->data['opt_kategori'] = array('' => '-Pilih salah satu -',
-                      'novel' => 'Novel',
-                      'komik' => 'Komik',
-                      'kamus' => 'Kamus',
-                      'Teknologi' => 'Teknologi');
-
     $this->load->model('Product_m');
     // load lib form validation
     $this->load->library('form_validation');
 
     // load lib pagination
     $this->load->library('pagination');
-    
+
   }
 
   public function index() {
@@ -51,9 +45,9 @@ class Product extends CI_Controller {
   function save($is_update=0) {
     $data['id']    = $this->input->post('id', true);
     $data['nama_produk']    = $this->input->post('nama_produk', true);
-    $data['desc_prduk']   = $this->input->post('desc_prduk', true);
-    $data['harga_prduk']   = $this->input->post('harga_prduk', true);
-    $data['gambar_prduk']   = $this->input->post('gambar_prduk', true);
+    $data['desc_produk']   = $this->input->post('desc_produk', true);
+    $data['harga_produk']   = $this->input->post('harga_produk', true);
+    $data['gambar_produk']   = $this->input->post('gambar_produk', true);
 
     if($is_update == 0) {
       // jika tambah data baru
@@ -86,9 +80,9 @@ class Product extends CI_Controller {
   function check() {
     $this->form_validation->set_rules('id', 'ID', 'trim');
     $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'trim|required');
-    $this->form_validation->set_rules('desc_prduk', 'Deskripsi Produk', 'trim');
-    $this->form_validation->set_rules('harga_prduk', 'Harga Produk', 'trim|required');
-    $this->form_validation->set_rules('gambar_prduk', 'Gambar Produk', 'trim|required');
+    $this->form_validation->set_rules('desc_produk', 'Deskripsi Produk', 'trim');
+    $this->form_validation->set_rules('harga_produk', 'Harga Produk', 'trim|required');
+    $this->form_validation->set_rules('gambar_produk', 'Gambar Produk', 'trim|required');
 
     $this->form_validation->set_message('required', 'Data {field} harus diisi.');
     $this->form_validation->set_error_delimiters('<div style="color: red;">', '</div></br>');
