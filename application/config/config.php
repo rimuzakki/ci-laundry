@@ -23,7 +23,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+//Setingan Database
+$config['database_host']	= 'localhost';
+$config['database_user']	= 'root';
+$config['database_pass'] 	= '';
+$config['database_name']	= 'laundry';
+
 $config['base_url'] = 'http://localhost/ci-laundry/';
+
+//Setingan Folder Assets dan Folder didalamnya
+$config['assets']			= $config['base_url'].'assets/';
+$config['css'] 				= $config['assets'].'css/';
+$config['js'] 				= $config['assets'].'js/';
+$config['img'] 				= $config['assets'].'img/';
+
+$config['vendor'] 			= $config['assets'].'vendor/';
+$config['bootstrap']		= $config['vendor'].'bootstrap/';
+$config['font_awesome']		= $config['vendor'].'font-awesome/';
+
+//Setingan Judul & Footer Web
+$config['web_title']		= "Pangestu laundry";
+$config['web_footer']		= $config['web_title']." &copy; 2018.";
 
 /*
 |--------------------------------------------------------------------------

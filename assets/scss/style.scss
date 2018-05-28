@@ -1,0 +1,553 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+body {
+  // font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: $fontColor;
+  background-color: $bodyColor;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+
+  margin: 0 0 35px;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+
+  margin: 0 0 25px;
+  @media(min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.6;
+
+    margin: 0 0 5px;
+  }
+}
+
+a {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  color: $primary;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+
+    color: darken($primary, 20%);
+  }
+}
+
+#mainNav {
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  margin-bottom: 0;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid fade-out(white, .7);
+  background: $navbarColor;
+  .navbar-toggler {
+    font-size: 14px;
+
+    padding: 11px;
+
+    color: $fontColor;
+    border: 1px solid $fontColor;
+  }
+  .navbar-brand {
+    font-weight: 700;
+  }
+  a {
+    color: $secondaryColor;
+  }
+  .navbar-nav {
+    .nav-item {
+      -webkit-transition: background 0.3s ease-in-out;
+      -moz-transition: background 0.3s ease-in-out;
+      transition: background 0.3s ease-in-out;
+      &:hover {
+        color: fade(white, 80%);
+        outline: none;
+        background-color: transparent;
+      }
+      &:active,
+      &:focus {
+        outline: none;
+        background-color: transparent;
+      }
+    }
+  }
+  @media(min-width:992px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+    -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+    transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+    letter-spacing: 1px;
+
+    border-bottom: none;
+    background: transparent;
+    &.navbar-shrink {
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      border-bottom: 1px solid fade-out(white, .7);
+      background: $navbarColor;
+    }
+    .nav-link.active {
+      outline: none;
+      background-color: $secondaryColor;
+      color: $navbarColor;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+.masthead {
+  display: table;
+
+  width: 100%;
+  height: auto;
+  padding: 200px 0;
+
+  text-align: center;
+
+  color: $fontColor;
+  background: url('../img/intro.jpg') no-repeat bottom center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  .intro-body {
+    display: table-cell;
+
+    vertical-align: middle;
+    .brand-heading {
+      font-size: 50px;
+      color: $introTextColor;
+    }
+    .intro-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px black;
+    }
+  }
+  @media(min-width:768px) {
+    height: 100%;
+    padding: 0;
+    .intro-body {
+      .brand-heading {
+        font-size: 100px;
+      }
+      .intro-text {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+.btn-circle {
+  font-size: 26px;
+
+  width: 55px;
+  height: 55px;
+  margin-top: 15px;
+  line-height: 45px;
+
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+
+  color: $secondaryColor;
+  border: 2px solid $secondaryColor;
+  border-radius: 100% !important;
+  background: transparent;
+  &:focus,
+  &:hover {
+    color: darken($secondaryColor, 10);
+    border: 2px solid darken($secondaryColor, 10);
+    outline: none;
+    background: fade-out(white, .9);
+  }
+}
+
+.content-section {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.testimoni-section {
+  color: white;
+  background: url('../img/order-bg.jpg') no-repeat center center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#maps {
+  width: 100%;
+  height: 300px;
+  background: url(../img/maps.jpg) no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media(min-width:992px) {
+  .content-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  #maps {
+    height: 350px;
+  }
+}
+
+.btn {
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+
+  border-radius: 0;
+}
+
+button, .btn {
+  background-color: transparent;
+  border-color: $secondaryColor;
+  color: $secondaryColor;
+  &:focus {
+    color: white;
+    border: 1px solid $secondaryColor;
+    outline: none;
+    background-color: $secondaryColor;
+    box-shadow: 0 0 0 0.2rem rgba($secondaryColor,.5);
+  }
+  &:hover {
+    color: white;
+    border: 1px solid $secondaryColor;
+    outline: none;
+    background-color: $secondaryColor;
+  }
+}
+
+
+.btn-default {
+  color: $secondaryColor;
+  border: 1px solid $secondaryColor;
+  background-color: transparent;
+  &:focus,
+  &:hover {
+    color: white;
+    border: 1px solid $secondaryColor;
+    outline: none;
+    background-color: $secondaryColor;
+  }
+}
+
+ul.banner-social-buttons {
+  margin-top: 0;
+  @media(max-width: 1199px) {
+    margin-top: 15px;
+  }
+  @media(max-width:767px) {
+    li {
+      display: block;
+
+      margin-bottom: 20px;
+      padding: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+footer {
+  padding: 50px 0;
+  p {
+    font-size: 14px;
+
+    margin: 0;
+  }
+}
+
+::-moz-selection {
+  background: #fcfcfc;
+  background: fade-out(white, .8);
+  text-shadow: none;
+}
+
+::selection {
+  background: #fcfcfc;
+  background: fade-out(white, .8);
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+body {
+  -webkit-tap-highlight-color: fade-out(white, .8);
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  margin-left: 0px;
+  font-size: 4em;
+}
+.step-card {
+  width: 75%;
+  margin: 0 auto;
+
+  [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-size: 4em;
+    color: $secondaryColor;
+  }
+  .fa-chevron-circle-right {
+    position: absolute;
+    top: 105px;
+    left: 95%;
+    color: $secondaryColor;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+.step-title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: $secondaryColor;
+}
+#testimoni-slider {
+  .col-md-4 {
+    float: left;
+  }
+  .carousel-control-next {
+    justify-content: flex-end;
+  }
+  .carousel-control-prev {
+    justify-content: flex-start;
+  }
+}
+.testi-card {
+  margin-bottom: 50px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  color: $fontColor;
+
+  .profile-picture {
+    margin: 0 auto;
+    img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+  .nama {
+    border-bottom: 2px solid $fontColor;
+    font-weight: bold;
+  }
+  .content p {
+    font-size: 14px;
+  }
+}
+
+.track {
+  margin: 40px 0px;
+    .form-control {
+      border: 1px solid transparent;
+    }
+}
+
+// form
+.form-control {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #000;
+  border-radius: 0;
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid $secondaryColor;
+    box-shadow: none;
+    color: $fontColor;
+  }
+}
+
+.btn-primary {
+  background-color: $secondaryColor;
+  color: $secondaryForeColor;
+  border: 1px solid $secondaryColor;
+  &:hover {
+    background-color: darken($secondaryColor, 5);
+    color: $secondaryForeColor;
+    border: 1px solid $secondaryColor;
+  }
+}
+.card {
+  position: relative;
+  margin: .5rem 0 1rem 0;
+  background-color: #fff;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+
+  .card-image {
+    position: relative;
+    img {
+      display: block;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      max-height: 150px;
+      margin: 0 auto;
+    }
+  }
+  .card-content {
+    padding: 10px;
+    border-radius: 0 0 2px 2px;
+    p {
+      margin: 0;
+      color: inherit;
+    }
+  }
+  .card .card-action {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160,160,160,0.2);
+    padding: 16px 24px;
+  }
+  .card-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  .product-desc {
+    text-align: center;
+    font-size: 80%;
+  }
+  .price {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+}
+.sc-add-to-cart {
+  background: transparent;
+  color: #202020;
+  margin: 0px auto 15px;
+  display: block;
+  font-size: 12px;
+}
+.sc-added-item:before {
+  border-color: rgba(255,255,255,0) $secondaryColor rgba(255,255,255,0) rgba(255,255,255,0);
+}
+.sc-added-item {
+  border-color: $secondaryColor;
+}
+#order, #checkout, #detail-pembayaran {
+  background-color: $orderSection;
+  margin-top: 80px;
+}
+#checkout {
+  padding: 50px 0px;
+}
+#detail-pembayaran {
+  padding: 50px 0px;
+}
+.sc-cart {
+  position: relative;
+  margin: .5rem 0 1rem 0;
+  background-color: #fff;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+.sc-cart-heading {
+  font-weight: bold;
+}
+.list-group-item-heading {
+  font-weight: normal;
+  margin: 0px;
+  font-size: 18px;
+}
+.list-group-item-text {
+  font-size: 14px;
+}
+.sc-cart-item-summary {
+  font-size: 14px;
+}
+.sc-cart-item {
+  border: none;
+  border-bottom: 1px solid $secondaryColor;
+  border-radius: 0px !important;
+}
+.sc-cart-summary-subtotal {
+  font-weight: bold;
+  font-size: 20px;
+}
+.sc-cart-checkout {
+  background-color: transparent !important;
+  border-color: $secondaryColor !important;
+  color: $secondaryColor !important;
+}
+.sc-cart-clear {
+  background-color: $secondaryColor !important;
+  border-color: $secondaryColor !important;
+  color: $secondaryForeColor !important;
+}
+.page-title {
+    margin: 25px 0px 50px;
+}
+.sub-title {
+    margin-bottom: 10px;
+}
