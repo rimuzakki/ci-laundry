@@ -1,8 +1,9 @@
-<head>
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css');?>" >
-</head>
-<?php 
-  echo anchor('product/add_new','Tambah Produk');
+<?php
+  $this->load->view('include/header'); 
+?>
+<div style="width: 80%; margin: 0 auto; margin-top: 100px;">
+<?php
+echo anchor('product/add_new','Tambah Produk');
 ?>
   <table class="table table-bordered table-responsiv">
     <thead>
@@ -46,3 +47,5 @@
   <p><?php echo $links; ?></p>
   <br>
   <a href="<?php  echo base_url();?>">Kembali</a>
+</div>
+<?php $this->load->view('include/footer'); ?>

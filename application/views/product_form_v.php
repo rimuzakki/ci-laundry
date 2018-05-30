@@ -1,5 +1,5 @@
 <?php
-  
+  $this->load->view('include/header'); 
   if (!empty($query)) {
     $row = $query->row_array();
   } 
@@ -14,31 +14,65 @@
   // echo form_open('buku/save/'.$is_update);
 
   // echo form_hidden('id',$row['id_buku']);
-
-  echo validation_errors();
-  echo form_open('product/check');
-  echo form_hidden('id', set_value('id', $row['id']));
-  echo form_hidden('is_update', $is_update);
-
-  echo "ID : ".form_input('id', set_value('id', $row['id']),"size='50' maxlength='100'");
-  echo "<br><br>";
-
-  echo "Nama Produk : ".form_input('nama_produk', set_value('nama_produk', $row['nama_produk']),"size='50' maxlength='150'");
-  echo "<br><br>";
-
-  echo "Deskripsi Produk : ".form_input('desc_produk', set_value('desc_produk', $row['desc_produk']),"size='50' maxlength='150'");
-  echo "<br><br>";
-
-  echo "Harga Produk : ".form_input('harga_produk', set_value('harga_produk', $row['harga_produk']),"size='50' maxlength='150'");
-  echo "<br><br>";
-
-  echo "Gambar Produk : ".form_input('gambar_produk', set_value('gambar_produk', $row['gambar_produk']),"size='50' maxlength='150'");
-  echo "<br><br>";
-
-
-  echo form_submit('btn_simpan', 'Simpan');
-
-  echo form_close();
-  
-
 ?>
+<div class="content-wrapper">
+  <section id="add-product" style="margin-top: 100px;">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+
+      <div class="row">
+        <div class="col-md-4 mx-auto">
+          <h2 class="page-title text-center">Add Product</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <?php
+            echo validation_errors();
+            echo form_open('product/check');
+            echo form_hidden('id', set_value('id', $row['id']));
+            echo form_hidden('is_update', $is_update);
+          ?>
+            
+            <div class="form-group">
+              <label for="id_produk">ID Produk</label>
+              <?php echo form_input('id', set_value('id', $row['id']),"class='form-control' id='id_produk' size='50' maxlength='100'"); ?>
+            </div> 
+            
+            <div class="form-group">
+              <label for="nama_produk">Nama Produk </label>
+              <?php echo form_input('nama_produk', set_value('nama_produk', $row['nama_produk']),"class='form-control' id='nama_produk' size='50' maxlength='150'"); ?>
+            </div> 
+
+            <div class="form-group">
+              <label for="deskripsi_produk">Deskripsi Produk </label>
+              <?php echo form_input('desc_produk', set_value('desc_produk', $row['desc_produk']),"class='form-control' id='deskripsi_produk' size='50' maxlength='150'"); ?>
+            </div> 
+
+            <div class="form-group">
+              <label for="harga">Harga Produk</label>
+              <?php echo form_input('harga_produk', set_value('harga_produk', $row['harga_produk']),"class='form-control' id='harga' size='50' maxlength='150'"); ?>
+            </div> 
+
+            <div class="form-group">
+              <label for="gambar_produk">Gambar Produk</label>
+              <?php echo form_input('gambar_produk', set_value('gambar_produk', $row['gambar_produk']),"class='form-control' id='gambar_produk' size='50' maxlength='150'"); ?>
+            </div> 
+
+          <?php
+
+            echo form_submit('btn_simpan', 'Simpan', "class='btn btn-default'");
+
+            echo form_close();
+            
+
+          ?>
+        </div>
+      </div> 
+
+    </div>
+  </section>
+  <!-- /.container-fluid-->
+  <!-- /.content-wrapper-->
+<?php $this->load->view('include/footer'); ?>
