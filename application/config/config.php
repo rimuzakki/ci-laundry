@@ -29,7 +29,7 @@ $config['database_user']	= 'root';
 $config['database_pass'] 	= '';
 $config['database_name']	= 'laundry';
 
-$config['base_url'] = 'http://localhost:8080/ci-laundry/';
+$config['base_url'] = 'http://localhost/ci-laundry/';
 
 //Setingan Folder Assets dan Folder didalamnya
 $config['assets']			= $config['base_url'].'assets/';

@@ -10,7 +10,7 @@
               <p class="intro-text">Pickup, Clean, and Delivery Service Laundry Indonesia.</p>
             </div>
           </div>
-          <form class="track" action="#" method="POST">
+          <form class="track" action="<?php echo site_url('homepage/get_order_status');?>" method="POST">
             <div class="row justify-content-center">
               <div class="col-lg-4 col-lg-offset-3">
                 <div class="form-group">
@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="col-lg-2">
-                <button type="submit" class="btn btn-primary">Track Order</button>
+                <button type="button" id="btn-track" class="btn btn-primary">Track Order</button>
               </div>
             </div>
           </form>
@@ -117,7 +117,7 @@
                   <div class="col-md-4">
                     <div class="testi-card">
                       <div class="profile-picture">
-                        <img src="img/pp/dian.jpg" class="img-fluid">
+                        <img src="<?php echo config_item('img'); ?>/pp/dian.jpg" class="img-fluid">
                       </div>
                       <p class="nama">Dian Sastro</p>
                       <div class="content">
@@ -131,7 +131,7 @@
                   <div class="col-md-4">
                     <div class="testi-card">
                       <div class="profile-picture">
-                        <img src="img/pp/reza.jpg" class="img-fluid">
+                        <img src="<?php echo config_item('img'); ?>/pp/reza.jpg" class="img-fluid">
                       </div>
                       <p class="nama">Reza Rahardian</p>
                       <div class="content">
@@ -145,7 +145,7 @@
                   <div class="col-md-4">
                     <div class="testi-card">
                       <div class="profile-picture">
-                        <img src="img/pp/raisa.jpg" class="img-fluid">
+                        <img src="<?php echo config_item('img'); ?>/pp/raisa.jpg" class="img-fluid">
                       </div>
                       <p class="nama">Raisa</p>
                       <div class="content">
@@ -162,7 +162,7 @@
                   <div class="col-md-4">
                     <div class="testi-card">
                       <div class="profile-picture">
-                        <img src="img/pp/teuku.jpg" class="img-fluid">
+                        <img src="<?php echo config_item('img'); ?>/pp/teuku.jpg" class="img-fluid">
                       </div>
                       <p class="nama">Teuku Wisnu</p>
                       <div class="content">
@@ -176,7 +176,7 @@
                   <div class="col-md-4">
                     <div class="testi-card">
                       <div class="profile-picture">
-                        <img src="img/pp/isyana.jpg" class="img-fluid">
+                        <img src="<?php echo config_item('img'); ?>/pp/isyana.jpg" class="img-fluid">
                       </div>
                       <p class="nama">Isyana Saraswati</p>
                       <div class="content">
@@ -190,7 +190,7 @@
                   <div class="col-md-4">
                     <div class="testi-card">
                       <div class="profile-picture">
-                        <img src="img/pp/rizky.jpg" class="img-fluid">
+                        <img src="<?php echo config_item('img'); ?>/pp/rizky.jpg" class="img-fluid">
                       </div>
                       <p class="nama">Rizky Febian</p>
                       <div class="content">
@@ -263,9 +263,16 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="track-content">
             <!-- <?=$track['status'];?> -->
-            <?php echo $status; ?>
+            <?php //echo $status; ?>
+            <!-- <?php 
+              foreach($results as $row) {
+                echo $row->status; 
+              }
+            ?> -->
+            
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -274,4 +281,5 @@
         </div>
       </div>
     </div>
+
 <?php $this->load->view('include/footer'); ?>
