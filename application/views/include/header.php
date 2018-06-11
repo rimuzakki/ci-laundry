@@ -46,16 +46,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="index.php#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url(); ?>#about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="booking.php">Order</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="index.php#testimoni">Testimonials</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url(); ?>#testimoni">Testimonials</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="index.php#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url(); ?>#contact">Contact</a>
             </li>
           </ul>
         </div>
