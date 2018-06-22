@@ -49,7 +49,7 @@
               <a class="nav-link js-scroll-trigger" href="<?php echo base_url(); ?>#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="booking.php">Order</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url("product"); ?>">Order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<?php echo base_url(); ?>#testimoni">Testimonials</a>
