@@ -25,7 +25,7 @@ class Product extends CI_Controller {
     $config = array();
     $config["base_url"] = base_url() . "product/index";
     $config["total_rows"] = $this->Product_m->jml_product();
-    $config["per_page"] = 5;
+    $config["per_page"] = 6;
     $config["uri_segment"] = 3;
 
     // Membuat Style pagination untuk BootStrap v4
@@ -55,6 +55,8 @@ class Product extends CI_Controller {
 
 
     // $this->add_new();
+    $this->data['kodeunik'] = $this->Product_m->code_otomatis();
+    $this->data['kodeunik_transaksi'] = $this->Product_m->code_otomatis_transaksi();
     $this->data['query'] = $this->Product_m->get_records(null, null, $config["per_page"], $page);
     $this->load->view('product_v', $this->data);
   }
@@ -115,6 +117,35 @@ class Product extends CI_Controller {
       $this->data['is_update'] = $this->input->post('is_update', true);
       $this->load->view('product_form_v', $this->data);
     }
+  }
+
+  function checkout() {
+    $data['id']    = $this->input->post('cart_id', true);
+    // Get the results as JSON string
+    $data['items'] = filter_input(INPUT_POST, 'cart_list');
+    // Convert JSON to array
+    $product_list_array = json_decode($data['items']);
+
+    $result_html = '';
+    if($product_list_array) {
+        foreach($product_list_array as $p) {
+            foreach($p as $key => $value) {
+                //var_dump($key, $value);
+                $result_html .= $key.": ".$value."<br />";
+            }
+            $result_html .= '------------------------------------------<br />';
+        }
+    } else {	
+      $result_html .= "<strong>Cart is Empty</strong>";
+    }
+      
+    $this->data['query'] = $this->Product_m->insert_checkout($data);
+
+    $this->load->view('checkout_v', $this->data);
+  }
+
+  function decode_items() {
+
   }
   
 }

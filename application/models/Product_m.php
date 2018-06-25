@@ -59,5 +59,46 @@
     function jml_product() {
       return $this->db->count_all('tb_products');
     }
+
+    function code_otomatis(){
+      $this->db->select('Right(tb_cart.id,4) as kode ',false);
+      $this->db->order_by('id', 'desc');
+      $this->db->limit(1);
+      $query = $this->db->get('tb_cart');
+      if($query->num_rows()<>0){
+          $data = $query->row();
+          $kode = intval($data->kode)+1;
+      }else{
+          $kode = 1;
+
+      }
+      $kodemax = str_pad($kode,4,"0",STR_PAD_LEFT);
+      $kodejadi  = "P".$kodemax;
+      return $kodejadi;
+    }
+
+    function code_otomatis_transaksi(){
+      $this->db->select('Right(tb_transactions.id,4) as kode ',false);
+      $this->db->order_by('id', 'desc');
+      $this->db->limit(1);
+      $query = $this->db->get('tb_transactions');
+      if($query->num_rows()<>0){
+          $data = $query->row();
+          $kode = intval($data->kode)+1;
+      }else{
+          $kode = 1;
+
+      }
+      $kodemax = str_pad($kode,4,"0",STR_PAD_LEFT);
+      $kodejadi  = "T".$kodemax;
+      return $kodejadi;
+    }
+
+    function insert_checkout($data) {
+			$query = $this->db->insert('tb_cart', $data);
+
+			return $query;
+		}
+
   }
 ?>
