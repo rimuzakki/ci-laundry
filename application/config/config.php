@@ -41,6 +41,8 @@ $config['vendor'] 			= $config['assets'].'vendor/';
 $config['bootstrap']		= $config['vendor'].'bootstrap/';
 $config['font_awesome']		= $config['vendor'].'font-awesome/';
 
+$config['admin'] 			= $config['assets'].'admin/';
+
 //Setingan Judul & Footer Web
 $config['web_title']		= "Pangestu laundry";
 $config['web_footer']		= $config['web_title']." &copy; 2018.";

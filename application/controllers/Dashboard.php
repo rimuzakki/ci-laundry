@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Dashboard extends CI_Controller {
 
   var $data = array();
 
@@ -11,7 +11,7 @@ class Product extends CI_Controller {
     $this->load->helper('form');
     $this->load->helper('url');
 
-    $this->load->model('Product_m');
+    $this->load->model('Dashboard_m');
     // load lib form validation
     $this->load->library('form_validation');
 
@@ -23,9 +23,9 @@ class Product extends CI_Controller {
   public function index() {
     // pagination
     $config = array();
-    $config["base_url"] = base_url() . "product/index";
-    $config["total_rows"] = $this->Product_m->jml_product();
-    $config["per_page"] = 5;
+    $config["base_url"] = base_url() . "dashboard/index";
+    $config["total_rows"] = $this->Dashboard_m->jml_data();
+    $config["per_page"] = 10;
     $config["uri_segment"] = 3;
 
     // Membuat Style pagination untuk BootStrap v4
@@ -55,13 +55,14 @@ class Product extends CI_Controller {
 
 
     // $this->add_new();
-    $this->data['query'] = $this->Product_m->get_records(null, null, $config["per_page"], $page);
-    $this->load->view('product_v', $this->data);
+    $this->data['query'] = $this->Dashboard_m->get_records(null, null, $config["per_page"], $page);
+    $this->load->view('admin/dashboard_v', $this->data);
+    //$this->load->view('admin/dashboard_v');
   }
 
   function add_new() {
     $this->data['is_update'] = 0;
-    $this->load->view('product_form_v', $this->data);
+    $this->load->view('dashboard_form_v', $this->data);
   }
 
   function save($is_update=0) {
@@ -73,30 +74,38 @@ class Product extends CI_Controller {
 
     if($is_update == 0) {
       // jika tambah data baru
-      if($this->Product_m->insert($data))
-        redirect('product');
+      if($this->Dashboard_m->insert($data))
+        redirect('dashboard');
     }
     else {
       // jika update data
       $id = $this->input->post('id');
 
-      if ($this->Product_m->update_by_id($data, $id)) 
-        redirect('product');
+      if ($this->Dashboard_m->update_by_id($data, $id)) 
+        redirect('dashboard');
     }
   }
 
   function edit($id) {
-    $this->data['query'] = $this->Product_m->get_records("ID_Product = '$id'");
+    $this->data['query'] = $this->Dashboard_m->get_records("ID_Product = '$id'");
 
     $this->data['is_update'] = 1;
 
-    $this->load->view('product_form_v', $this->data);
+    $this->load->view('dashboard_form_v', $this->data);
   }
 
   function delete($id) {
-    if($this->Product_m->delete_by_id($id)) {
-      redirect('product');
+    if($this->Dashboard_m->delete_by_id($id)) {
+      redirect('dashboard');
     }
+  }
+
+  function update() {
+        $id    = $this->input->post('id', true);
+        $status    = $this->input->post('cmb_status', true);
+        
+        if($this->Dashboard_m->update_batch($id, $status))
+            redirect('dashboard');
   }
 
   function check() {
@@ -113,8 +122,7 @@ class Product extends CI_Controller {
       $this->save($this->input->post('is_update', true));
     } else {
       $this->data['is_update'] = $this->input->post('is_update', true);
-      $this->load->view('product_form_v', $this->data);
+      $this->load->view('dashboard_form_v', $this->data);
     }
-  }
-  
+  }  
 }

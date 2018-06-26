@@ -1,10 +1,10 @@
 <?php
-  $this->load->view('include/header'); 
+  $this->load->view('admin/include/header'); 
   if (!empty($query)) {
     $row = $query->row_array();
   } 
   else {
-    $row['id'] = '';
+    $row['id'] =  $kodeunik;
     $row['nama_produk'] = '';
     $row['desc_produk'] = '';
     $row['harga_produk'] = '';
@@ -30,14 +30,14 @@
         <div class="col-md-8 mx-auto">
           <?php
             echo validation_errors();
-            echo form_open('product/check');
+            echo form_open('product_dashboard/check');
             echo form_hidden('id', set_value('id', $row['id']));
             echo form_hidden('is_update', $is_update);
           ?>
             
             <div class="form-group">
               <label for="id_produk">ID Produk</label>
-              <?php echo form_input('id', set_value('id', $row['id']),"class='form-control' id='id_produk' size='50' maxlength='100'"); ?>
+              <?php echo form_input('id', set_value('id', $row['id']),"class='form-control' id='id_produk' size='50' maxlength='100' readonly"); ?>
             </div> 
             
             <div class="form-group">
@@ -57,7 +57,7 @@
 
             <div class="form-group">
               <label for="gambar_produk">Gambar Produk</label>
-              <?php echo form_input('gambar_produk', set_value('gambar_produk', $row['gambar_produk']),"class='form-control' id='gambar_produk' size='50' maxlength='150'"); ?>
+              <?php echo form_upload('gambar_produk', set_value('gambar_produk', $row['gambar_produk']),"class='form-control' id='gambar_produk' size='50' maxlength='150'"); ?>
             </div> 
 
           <?php
@@ -75,4 +75,4 @@
   </section>
   <!-- /.container-fluid-->
   <!-- /.content-wrapper-->
-<?php $this->load->view('include/footer'); ?>
+<?php $this->load->view('admin/include/footer'); ?>
