@@ -18,6 +18,11 @@ class Product_dashboard extends CI_Controller {
     // load lib pagination
     $this->load->library('pagination');
 
+    // cek session
+		if(!is_logged_in()) {
+			redirect('dashboard', 'refresh');
+		}
+
   }
 
   public function index() {

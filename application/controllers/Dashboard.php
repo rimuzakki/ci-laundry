@@ -12,11 +12,17 @@ class Dashboard extends CI_Controller {
     $this->load->helper('url');
 
     $this->load->model('Dashboard_m');
+    $this->load->model('User_m');
     // load lib form validation
     $this->load->library('form_validation');
 
     // load lib pagination
     $this->load->library('pagination');
+
+    // cek session
+    // if(!is_logged_in()) {
+    //     redirect('dashboard', 'refresh');
+    // }
 
   }
 
@@ -55,9 +61,19 @@ class Dashboard extends CI_Controller {
 
 
     // $this->add_new();
-    $this->data['query'] = $this->Dashboard_m->get_records(null, null, $config["per_page"], $page);
-    $this->load->view('admin/dashboard_v', $this->data);
+    // $this->data['query'] = $this->Dashboard_m->get_records(null, null, $config["per_page"], $page);
+    // $this->load->view('admin/dashboard_v', $this->data);
     //$this->load->view('admin/dashboard_v');
+
+    if($this->session->userdata('logged_in')) {
+        $session_data = $this->session->userdata('logged_in');
+        $data['username'] = $session_data['username'];
+        $this->data['query'] = $this->Dashboard_m->get_records(null, null, $config["per_page"], $page);
+        $this->load->view('admin/dashboard_v', $this->data);
+    }
+    else {
+        $this->load->view('admin/login_v');
+    }
   }
 
   function add_new() {
@@ -125,4 +141,69 @@ class Dashboard extends CI_Controller {
       $this->load->view('dashboard_form_v', $this->data);
     }
   }  
+
+  public function login() {
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_user');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_login');
+
+    $this->form_validation->set_message('required', '{field} harus diisi.');
+    $this->form_validation->set_error_delimiters('<div style="color: red;">', '</div><br>');
+
+    if($this->form_validation->run() == FALSE) {
+      $this->load->view('admin/login_v');
+    }
+    else {
+      redirect('dashboard', 'refresh');
+    }
+  }
+
+  function logout() {
+    $this->session->unset_userdata('logged_in');
+    session_destroy();
+    redirect('dashboard', 'refresh');
+  }
+
+  public function check_user($username) {
+    if(empty($username)) {
+      $this->form_validation->set_message('check_user', 'Username harus diisi!');
+    }
+    else {
+      $result = $this->User_m->cek_user($username);
+      if($result) {
+        return $result;
+      }
+      else {
+        $this->form_validation->set_message('check_user', 'Username tidak ada di sistem');
+        return false;
+      }
+    }
+  }
+
+  public function check_login($password) {
+    if(empty($password)) {
+      $this->form_validation->set_message('check_login', 'Password harus diisi!');
+    }
+    else {
+      // validari form sukses, cek db
+      $username = $this->input->post('username');
+      // query ke db
+      $result = $this->User_m->login($username, $password);
+
+      if($result) {
+        $sess_array = array();
+        foreach($result as $row) {
+          $sess_array = array(
+                        'id' => $row->id,
+                        'username' => $row->username
+                        );
+          $this->session->set_userdata('logged_in', $sess_array);
+        }
+        return true;
+      }
+      else {
+        $this->form_validation->set_message('check_login', 'Password salah');
+        return false;
+      }
+    }
+  }
 }
